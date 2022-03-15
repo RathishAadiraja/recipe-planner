@@ -1,0 +1,25 @@
+﻿@model RecipePlanner.Models.DeleteRecipeOne
+@{
+    ViewData["Title"] = "DeleteRecipeOne";
+}
+
+<h1>Delete an item</h1>
+
+<form asp-action="DeleteRecipeOne">
+    <div class="form-group">
+        <label asp-for="DRDropDown">Select Food</label>
+
+        <select asp-for="DRDropDown" class="form-control" id="exampleFormControlSelect1">
+            @foreach (var i in MakeObject.GlobalAllRecipeData)
+            {
+                <option>@i.ItemName</option>
+            }
+        </select>
+    </div>
+    <hr />
+    <div class="form-group text-center">
+
+        <input type="submit" value="Delete this item" class="btn btn-primary btn-block" asp-action="DeleteRecipeOne" />
+
+    </div>
+</form>

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "ShowAllIngredients";
+}
+
+<h1>All Ingredients needed to cook</h1>
+
+
+
+<form asp-action="ShowAllIngredients">
+    <fieldset disabled>
+        <ul class="list-group list-group-flush">
+
+            @foreach (var lst in MakeObject.FinalListofIngred)
+            {          
+                <li class="list-group-item">@lst</li>
+
+            }
+
+        </ul>
+
+        
+    </fieldset>
+</form>

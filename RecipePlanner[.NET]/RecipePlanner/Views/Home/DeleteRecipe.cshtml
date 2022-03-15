@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "DeleteRecipe";
+}
+
+<h1>Item to be deleted</h1>
+<form asp-action="DeleteRecipe">
+    <div class="form-group">
+
+        <p>Are you sure you want to delete this item?</p>
+        @foreach (var i in MakeObject.GlobalAllRecipeData)
+        {
+            @if (i.ItemName == MakeObject.DeleteDropDownSelectedItem)
+            {
+                <b>Food Name:</b> @i.ItemName
+                <br />
+                <ul class="list-group">
+                    Recipe: @foreach (var relst in i.HowToMake)
+                    {
+                        <li class="list-group-item">@relst</li>
+                    }
+                </ul>
+                <br />
+                <ul class="list-group">
+                    Ingredients: @foreach (var inglst in i.AllIngredients)
+                    {
+                        <li class="list-group-item">@inglst.IngredName: @inglst.IngredQuant @inglst.Unit</li>
+                    }
+                </ul>
+                <br />
+                <hr />
+
+
+
+            }
+
+        }
+    </div>
+    <hr />
+    <div class="form-group text-center">
+
+        <input name="submit" type="submit" id="Save" value="Delete" class="btn btn-primary btn-block" asp-action="DeleteRecipe" />
+        <input name="submit" type="submit" id="Process" value="Cancel" class="btn btn-secondary btn-block" asp-action="DeleteRecipe" />
+
+    </div>
+</form>

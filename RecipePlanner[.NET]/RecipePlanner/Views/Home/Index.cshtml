@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Lis of available recipies and food items.</p>
+
+    @{int num = 0;}
+    @foreach (var i in Model)
+    {
+        <div class="accordion" id="accordion_@num">
+            <div class="card">
+                <div class="card-header" id="heading_@num">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_@num" aria-expanded="true" aria-controls="collapse_@num">
+                            @i.ItemName
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse_@num" class="collapse" aria-labelledby="heading_@num" data-parent="#accordion_@num">
+                    <div class="card-body">
+                        <br />
+                        <ul class="list-group">
+                            Recipe: @foreach (var relst in i.HowToMake)
+                            {
+                                <li class="list-group-item">@relst</li>
+                            }
+                        </ul>
+                        <br />
+                        <ul class="list-group">
+                            Ingredients: @foreach (var inglst in i.AllIngredients)
+                            {
+                                <li class="list-group-item">@inglst.IngredName: @inglst.IngredQuant @inglst.Unit</li>
+                            }
+                        </ul>
+                        <br />
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        num++;
+
+
+     }
+        
+</div>

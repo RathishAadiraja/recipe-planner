@@ -1,0 +1,25 @@
+﻿@model RecipePlanner.Models.EditRecipeOne
+@{
+    ViewData["Title"] = "EditRecipeOne";
+}
+
+<h1>Edit an item</h1>
+
+<form asp-action="AddRecipe">
+    <div class="form-group">
+        <label asp-for="ERDropDown">Select Food</label>
+        
+        <select asp-for="ERDropDown" class="form-control" id="exampleFormControlSelect1">
+            @foreach (var i in MakeObject.GlobalAllRecipeData)
+            {
+                <option>@i.ItemName</option>
+            }
+        </select>
+    </div>
+    <hr />
+    <div class="form-group text-center">
+       
+        <input type="submit" value="Edit this item" class="btn btn-primary btn-block" asp-action="EditRecipeOne" />
+
+    </div>
+</form>

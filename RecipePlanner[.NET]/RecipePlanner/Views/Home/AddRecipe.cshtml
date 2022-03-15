@@ -1,0 +1,38 @@
+﻿@model RecipePlanner.Models.AddRecipe
+@{
+    ViewData["Title"] = "AddRecipe";
+}
+
+<h1>Add an item</h1>
+
+
+@ViewBag.Error
+<form asp-action="AddRecipe">
+    <div class="form-group">
+        <label asp-for="ARFoodName"></label>
+        <input id="foodname" asp-for="ARFoodName" class="form-control" />
+        <span asp-validation-for="ARFoodName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ARIngredients"></label>
+        <textarea id="ingredient" asp-for="ARIngredients" class="form-control" rows="6"></textarea>
+        <span asp-validation-for="ARIngredients" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ARHowTomake"></label>
+        <textarea id="howtomake" asp-for="ARHowTomake" class="form-control" rows="6"></textarea>
+        <span asp-validation-for="ARHowTomake" class="text-danger"></span>
+    </div>
+    <hr />
+    <div class="form-group text-center">
+
+        <input name="submit" type="submit" id="Add" value="Add" class="btn btn-primary btn-block" asp-action="AddRecipe" />
+        <input onclick="document.getElementById('foodname').value = ''
+                        document.getElementById('ingredient').value = ''
+                        document.getElementById('howtomake').value = ''" 
+               name="submit" type="submit" id="Process" value="Cancel" class="btn btn-secondary btn-block" asp-action="AddRecipe" />
+    </div>
+</form>
+
